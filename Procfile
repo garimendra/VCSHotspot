@@ -1,0 +1,1 @@
+web: gunicorn bugPrediction.wsgi --log-file -

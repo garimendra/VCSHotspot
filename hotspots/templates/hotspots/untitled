@@ -1,0 +1,47 @@
+(function(){
+	'use strict' ;
+
+	angular.module('hotspots.demo', [])
+		.controller('HotspotController', 
+			[ '$scope', '$http', HotspotController ]);
+
+	function HotspotController($scope, $http) {
+
+		$scope.data = [];
+		$scope.score = {'score' : 0};
+		$scope.loading = false;
+		$scope.curDir = '//';
+		
+
+		$scope.getChildren = function(dir) {
+			$scope.data = [];
+			$scope.loading = true;
+			$http.get('/hotspots/fetchChildren', { params: { curDir: dir }})
+				.then(function(response){
+					$scope.score = {'score' : 0};
+					$scope.data = response.data;
+					$scope.loading = false;
+				});
+		}
+
+		$scope.getScore = function(path) {
+			$scope.score = {'score' : 0};
+			$http.get('/hotspots/fetchChildren', { params : { curDir : path }})
+				.then(function(response) {
+					$scope.score = response.data;
+				});
+		}
+
+		$scope.getChildren($scope.curDir);
+
+		$scope.handleClick = function(evt, item) {
+			$scope.curDir = item;
+			$scope.getChildren(item + '/');
+		}
+
+		$scope.scoreClick = function(evt, idx) {
+			$scope.getScore(idx);
+		}
+	}
+
+}());

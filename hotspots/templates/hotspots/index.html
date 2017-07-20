@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html> 
+
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href={% static "hotspots/css/materialize.min.css" %}  media="screen,projection"/>
+
+  </head>
+
+  <style>
+
+  .pointer {
+    cursor: pointer;
+  }
+
+   /* 
+   .myapp {
+      width: 80%;
+      margin: auto;
+      padding: 10px;
+    }*/
+
+   /* .left {
+      width: 15%;
+      background: white;
+      float: left;
+    }
+    .right {
+      margin-left: 15%;
+
+      background: white;
+      text-align: center;
+    }
+    */
+
+  </style>
+  <body ng-app = "hotspotsApp">
+    <br>
+    
+    {% verbatim %}
+
+
+
+    <div class="container"  >
+
+      <div ng-controller = "HotspotController">
+        
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12 hoverable" >
+              <span ng-repeat = "crumb in crumbs" class="pointer breadcrumb" ng-click="handleClick($event, crumb)" >
+                {{ temp = crumb.split('/'); temp[temp.length - 1] }}
+              </span>
+            </div>
+          </div>
+        </nav>
+        <br>
+        <div class = "left">
+               
+          <div ng-if="loading" >
+            <h5>Fetching Content ...</h5>
+          </div>
+
+          <div ng-if="!loading">
+
+              <div ng-repeat = "item in data['dirs']" ng-click="handleClick($event, item)">
+                <div  class="card-panel hoverable light-blue lighten-5">
+                 <i class="material-icons blue-text text-darken-2">work</i><span class=" pointer blue-text text-darken-2">{{ temp = item.split('/'); temp[temp.length - 1] }} </span>
+                </div>
+              </div>  
+              <div class = "card-panel hoverable teal lighten-2" ng-repeat = "idx in data['files']" >
+                
+                <div class="green-text text-lighten-4 pointer" ng-click = "scoreClick($event, idx)" > 
+                  {{ temp = idx.split('/'); temp[temp.length - 1] }} 
+                </div>
+                 
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class = "right"  > 
+          <div>
+            {{ temp = curFile.split('/'); temp[temp.length - 1] }}
+          <div>
+          <div ng-class = "getClass()" >
+                {{  score['score'] }}
+           
+          </div>
+          
+        </div>
+         
+
+      </div>
+      
+    </div>
+
+  {% endverbatim %} 
+    
+   
+    <script src = {% static "hotspots/js/angular.min.js" %}></script>
+    <script src = {% static "hotspots/js/angular-route.min.js" %}></script>
+    <script src = {% static "hotspots/js/hotspots.js" %} ></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src={% static "hotspots/js/materialize.min.js" %}></script>
+
+  </body>
+</html>
+

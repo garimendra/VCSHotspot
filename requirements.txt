@@ -1,0 +1,17 @@
+certifi==2017.4.17
+chardet==3.0.4
+Django==1.11.2
+django-filter==1.0.4
+djangorestframework==3.6.3
+gunicorn==19.7.1
+httpie==0.9.9
+idna==2.5
+Markdown==2.6.8
+p4python==2016.2.1498648
+Pygments==2.2.0
+pymongo==3.4.0
+pytz==2017.2
+requests==2.18.1
+urllib3==1.21.1
+virtualenv==15.1.0
+whitenoise==3.3.0
