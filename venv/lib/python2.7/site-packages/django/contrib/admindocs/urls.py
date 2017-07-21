@@ -1,41 +1,32 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.contrib.admindocs import views
 
-urlpatterns = patterns('',
-    url('^$',
-        views.doc_index,
-        name='django-admindocs-docroot'
-    ),
-    url('^bookmarklets/$',
-        views.bookmarklets,
-        name='django-admindocs-bookmarklets'
-    ),
-    url('^tags/$',
-        views.template_tag_index,
-        name='django-admindocs-tags'
-    ),
-    url('^filters/$',
-        views.template_filter_index,
-        name='django-admindocs-filters'
-    ),
-    url('^views/$',
-        views.view_index,
-        name='django-admindocs-views-index'
-    ),
-    url('^views/(?P<view>[^/]+)/$',
-        views.view_detail,
-        name='django-admindocs-views-detail'
-    ),
-    url('^models/$',
-        views.model_index,
-        name='django-admindocs-models-index'
-    ),
-    url('^models/(?P<app_label>[^\.]+)\.(?P<model_name>[^/]+)/$',
-        views.model_detail,
-        name='django-admindocs-models-detail'
-    ),
-    url('^templates/(?P<template>.*)/$',
-        views.template_detail,
-        name='django-admindocs-templates'
-    ),
-)
+urlpatterns = [
+    url(r'^$',
+        views.BaseAdminDocsView.as_view(template_name='admin_doc/index.html'),
+        name='django-admindocs-docroot'),
+    url(r'^bookmarklets/$',
+        views.BookmarkletsView.as_view(),
+        name='django-admindocs-bookmarklets'),
+    url(r'^tags/$',
+        views.TemplateTagIndexView.as_view(),
+        name='django-admindocs-tags'),
+    url(r'^filters/$',
+        views.TemplateFilterIndexView.as_view(),
+        name='django-admindocs-filters'),
+    url(r'^views/$',
+        views.ViewIndexView.as_view(),
+        name='django-admindocs-views-index'),
+    url(r'^views/(?P<view>[^/]+)/$',
+        views.ViewDetailView.as_view(),
+        name='django-admindocs-views-detail'),
+    url(r'^models/$',
+        views.ModelIndexView.as_view(),
+        name='django-admindocs-models-index'),
+    url(r'^models/(?P<app_label>[^\.]+)\.(?P<model_name>[^/]+)/$',
+        views.ModelDetailView.as_view(),
+        name='django-admindocs-models-detail'),
+    url(r'^templates/(?P<template>.*)/$',
+        views.TemplateDetailView.as_view(),
+        name='django-admindocs-templates'),
+]

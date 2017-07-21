@@ -20,10 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h=!qv1k377dvsn3d4ne-9pe_!!-l9xdg_ylz)$*1)80rgy^eb_'
+# SECRET_KEY = 'h=!qv1k377dvsn3d4ne-9pe_!!-l9xdg_ylz)$*1)80rgy^eb_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+
+SECRET_KEY = 'h=!qv1k377dvsn3d4ne-9pe_!!-l9xdg_ylz)$*1)80rgy^eb_'
+DEBUG = True;
 
 ALLOWED_HOSTS = []
 
@@ -38,7 +41,7 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'rest_framework',
+	# 'rest_framework',
 
 ]
 
@@ -119,9 +122,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+# Extra places for collectstatic to find static files.
+
+
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_RENDERER_CLASSES': (
@@ -129,10 +140,10 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #     )
 # }
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }

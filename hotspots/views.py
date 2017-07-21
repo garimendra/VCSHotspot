@@ -6,13 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from hotspots.models import TreeNode
-from hotspots.serializers import TreeNodeSerializer
 from hotspots.utils.connect import *
-from rest_framework import status, permissions
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
 from django.http import HttpResponse, JsonResponse
 import json
 
@@ -72,26 +66,26 @@ def fetchChildren(request) :
 
 
 
-@api_view(['GET'])
-def api_root(request, format=None):
-    return Response({
-        'treeNodes': reverse('treeNode-list', request=request, format=format)
-    })
+# @api_view(['GET'])
+# def api_root(request, format=None):
+#     return Response({
+#         'treeNodes': reverse('treeNode-list', request=request, format=format)
+#     })
 
 
-#mixins generic view classes
+# #mixins generic view classes
 
-@permission_classes((permissions.AllowAny,))
+# @permission_classes((permissions.AllowAny,))
 
-class TreeNodeList(generics.ListCreateAPIView):
-    queryset = TreeNode.objects.all()
-    serializer_class = TreeNodeSerializer
+# class TreeNodeList(generics.ListCreateAPIView):
+#     queryset = TreeNode.objects.all()
+#     serializer_class = TreeNodeSerializer
 
-@permission_classes((permissions.AllowAny,))
+# @permission_classes((permissions.AllowAny,))
 
-class TreeNodeDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TreeNode.objects.all()
-    serializer_class = TreeNodeSerializer
+# class TreeNodeDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = TreeNode.objects.all()
+#     serializer_class = TreeNodeSerializer
 
 
 

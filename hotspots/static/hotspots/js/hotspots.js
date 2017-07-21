@@ -75,7 +75,6 @@
 		$scope.getClass = function() {
 			var	idx = Math.floor($scope.score['score']*10+0.5);
 			idx = Math.min(idx, 8);
-			console.log(idx);
 			$scope.shade = shades[idx];
 			return "card-panel " + $scope.shade;
 		}

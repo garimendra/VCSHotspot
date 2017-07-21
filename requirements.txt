@@ -1,5 +1,6 @@
 certifi==2017.4.17
 chardet==3.0.4
+dj-database-url==0.4.2
 Django==1.11.2
 django-filter==1.0.4
 djangorestframework==3.6.3
@@ -10,6 +11,7 @@ Markdown==2.6.8
 p4python==2016.2.1498648
 Pygments==2.2.0
 pymongo==3.4.0
+python-decouple==3.0
 pytz==2017.2
 requests==2.18.1
 urllib3==1.21.1
