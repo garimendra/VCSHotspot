@@ -9,7 +9,7 @@ httpie==0.9.9
 idna==2.5
 Markdown==2.6.8
 p4python==2016.2.1498648
-Pygments==2.2.0
+Pygments==2.7.4
 pymongo==3.4.0
 python-decouple==3.0
 pytz==2017.2
